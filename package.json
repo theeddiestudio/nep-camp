@@ -1,14 +1,17 @@
 {
   "name": "yelpcamp",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "My own version of yelpCamp through Colt Steele tutorials.",
+  "main": "server.js",
+  "author": "theeddiestudio",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "type": "commonjs",
   "dependencies": {
+    "ejs": "^7.0.2",
     "express": "^5.3.0",
     "method-override": "^3.0.0",
     "mongoose": "^9.11.2"
