@@ -3106,7 +3106,7 @@ const data = `{
         },
         {
             "id": 7,
-            "name": "SUDUR PASHCHIMANCHAL PROVINCE",
+            "name": "SUDURPASHCHIM PROVINCE",
             "districtList": [
                 {
                     "id": 69,

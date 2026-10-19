@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { Campground } = require('../models');
 const cities = require('./cities');
 const {descriptors, types} = require('./helper');
+const getCoordinates = require('./geocode');
 
 let municipalitiesList = [];
 let filteredList = [];
@@ -41,27 +42,11 @@ const filterNames = (inputArray) => {
     return arr;
 }
 
-// const filterNames = async (inputArray) => {
-//     let arr = [];
-//     for(let element of inputArray) {
-//         let remover = element.name.includes('Metropolitian City') ? 'Metropolitian City' : null ||
-//             element.name.includes('Sub-metropolitian City') ? 'Sub-metropolitian City' : null ||
-//             element.name.includes('Rural Municipality') ? 'Rural Municipality' : null ||
-//             element.name.includes('Municipality') ? 'Municipality' : null ||
-//             element.name.includes('Gaun Palika') ? 'Gaun Palika' : null;
-//         if(remover) {
-//             let item = element.name.slice(0, element.name.indexOf(" " + remover).toLowerCase());
-//             arr.push(item[0].toUpperCase() + item.slice(1));
-//         }
-//     }
-//     return arr;
-// }
-
 const prepareData = async () => {
     const provinces = [];
     const districts = [];
     const municipalities = [];
-    for (let index = 0; index < 200; index++) {
+    for (let index = 0; index < 70; index++) {
         const id = Math.floor(Math.random() * 753) + 1;
         provinces.push(cities.provinceList.reduce((a,b) => {
             return Math.abs(a.districtList.reduce((a,b) => {
@@ -110,8 +95,6 @@ const prepareData = async () => {
             }
         })
     }
-    // const camp = new Campground({ title: 'purple field'});
-    // await camp.save();
 }
 
 const seedDb = async () => {
@@ -119,6 +102,9 @@ const seedDb = async () => {
     let count = 1;
     for(let item of filteredList) {
         try {
+            
+            // const { latitude, longitude } = await getCoordinates(item.name, item.location.slice(item.location.indexOf(', ')));
+            
             const title = `${item.name} ${descriptors[Math.floor(Math.random() * descriptors.length)]} ${types[Math.floor(Math.random() * types.length)]}`;
             const location = `${item.location}`;
             const camp = new Campground({
