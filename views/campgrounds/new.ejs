@@ -1,25 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Campground</title>
-</head>
-<body>
-    <h1>Add Campground</h1>
+<% layout('./layouts/boilerplate') -%>
+<h1 class="text-center">Add Campground</h1>
+<div class="col-6 offset-3">
     <form action="/campgrounds" method="post">
-        <div>
-            <label for="name">Name of the campground</label>
-            <input type="text" id="name" name="campground[name]">
+        <div class="mb-3">
+            <label class="form-label" for="name">Name of the campground</label>
+            <input class="form-control" type="text" id="name" name="campground[name]">
         </div>
-        <div>
-            <label for="location">Enter location</label>
-            <input type="text" id="location" name="campground[location]">
+        <div class="mb-3">
+            <label  class="form-label" for="location">Enter location</label>
+            <input class="form-control" type="text" id="location" name="campground[location]">
         </div>
-        <button>Save</button>
+        <div class="mb3">
+            <label for="price" class="form-label">Enter Price</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="price-label">$</span>
+                <input type="text" class="form-control" placeholder="0.00" id="price" aria-label="price" aria-describedby="price-label" name="campground[price]">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label" for="image">Enter image url</label>
+            <input class="form-control" type="text" id="image" name="campground[image]">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="description">Enter description</label>
+            <textarea class="form-control" type="text" id="description" name="campground[description]"></textarea>
+        </div>
+        <div class="b-3">
+            <button class="btn btn-success">Save</button>
+        </div>
     </form>
-    <footer>
-        <a href="/campgrounds">Cancel</a>
-    </footer>
-</body>
-</html>
+    <a href="/campgrounds">Cancel</a>
+</div>

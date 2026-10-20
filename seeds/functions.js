@@ -13,7 +13,6 @@ const capitalizeProper = (str) => {
 }
 
 const getCoords = (name, location) => {
-    // getCoordinates(item.name, item.location.slice(item.location.indexOf(', ')))
     return getCoordinates(name, location).then(res => res).catch(e => console.log(e));
 }
 
@@ -50,7 +49,10 @@ const flattenList = (dataList, idList) => {
                 if(idList.includes(x.id) && municipality.length >= 5) {
                     const name = `${municipality} ${descriptors[Math.floor(Math.random() * descriptors.length)]} ${types[Math.floor(Math.random() * types.length)]}`;
                     const location = `${municipality}, ${province}`;
-                    outputList.push({ name, location });
+                    const image = `https://picsum.photos/400?random=${Math.random()}`;
+                    const price = Math.floor(Math.random() * 20) + 10;
+                    const description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi facilis a inventore quod laborum quas, voluptas illum provident dolorem quae amet incidunt reprehenderit assumenda nisi eveniet sunt fuga officiis deserunt!';
+                    outputList.push({ name, location, image, price, description });
                 } else if(idList.includes(x.id)) {
                     const name = `${municipality} ${descriptors[Math.floor(Math.random() * descriptors.length)]} ${types[Math.floor(Math.random() * types.length)]}`;
                     const location = `${capitalizeProper(x.name)}, ${province}`;
