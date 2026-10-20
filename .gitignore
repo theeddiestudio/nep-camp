@@ -150,8 +150,4 @@ vite.config.ts.timestamp-*
 
 # Custom
 */*.env
-<<<<<<< Updated upstream
 test*
-=======
-test*
->>>>>>> Stashed changes
